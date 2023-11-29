@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @page {
+  size: landscape;
+  margin: 0.5in;
+}
+        #container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+        .card {
+         box-sizing : border-box;
+         border: 1px solid black;
+         padding: 1rem;
+         width: 4.5in;
+  height: 3in;
+         font-family: Arial, Helvetica, sans-serif;
+         font-size: 1rem;
+         position: relative;
+         page-break-inside: avoid;
+         
+            
+          /* overflow: hidden; */
+        }
+
+        .back {
+            
+            font-size: .8rem;
+        }
+
+        .card::before,
+.front::before,
+.back::before,
+.card::after,
+.front::after,
+.back::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 10px;
+  color: #888;
+}
+
+.card::before {
+  content: "Front";
+}
+
+.front::before {
+  content: "Front";
+}
+
+.back::before {
+  content: "Back";
+}
+@media print {
+  #select {
+    display: none;
+  }
+}
+
+      </style>
+</head>
+<body>
+    
+    <div id="select" >
+        <label for="book">Select Book:</label>
+        <select id="book">
+          <!-- Add options dynamically using JavaScript -->
+        </select>
+    
+        <label for="chapter">Select Chapter:</label>
+        <input type="number" id="chapter" min="1" value="1">
+        
+        <button onclick="generateCards()">Generate Cards</button>
+      </div>
+    
+      <div id="container"></div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
